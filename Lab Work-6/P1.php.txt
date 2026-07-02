@@ -1,0 +1,25 @@
+<?php
+
+$str = "Hello World PHP Programming";
+
+echo "Original String: " . $str . "<br><br>";
+
+// 1. strlen()
+echo "1. Length of String: " . strlen($str) . "<br><br>";
+
+// 2. strpos()
+echo "2. Position of 'PHP': " . strpos($str, "PHP") . "<br><br>";
+
+// 3. str_word_count()
+echo "3. Number of Words: " . str_word_count($str) . "<br><br>";
+
+// 4. strrev()
+echo "4. Reversed String: " . strrev($str) . "<br><br>";
+
+// 5. strtolower()
+echo "5. Lowercase String: " . strtolower($str) . "<br><br>";
+
+// 6. strtoupper()
+echo "6. Uppercase String: " . strtoupper($str) . "<br><br>";
+
+?>
