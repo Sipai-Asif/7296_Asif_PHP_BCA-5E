@@ -1,0 +1,38 @@
+##############################################
+# Gr1 -- Bar Chart: Top 10 Apps by Rating
+##############################################
+
+data <- read.csv("R_pro_dataset.csv", header = TRUE, stringsAsFactors = FALSE)
+
+names(data) <- trimws(names(data))
+
+data$rating <- as.numeric(data$rating)
+
+data_clean <- data[!is.na(data$rating), ]
+
+top_apps <- data_clean[order(data_clean$rating, decreasing = TRUE), ]
+top_apps <- head(top_apps, 10)
+
+app_rating <- top_apps$rating
+names(app_rating) <- top_apps$app_name
+
+colors1 <- c("lightblue", "lightgreen", "khaki", "lightpink", "peachpuff",
+             "honeydew", "lavender", "mistyrose", "cornsilk", "lightcyan")
+colors1 <- colors1[1:length(app_rating)]
+
+png("Gr01_BarChart_Top_Apps_Rating.png", width = 900, height = 600)
+
+midPoints <- barplot(app_rating,
+                     col = colors1,
+                     main = "Top 10 Apps by Rating",
+                     xlab = "App Name",
+                     ylab = "Rating",
+                     ylim = c(0, max(app_rating) + 0.5),
+                     las = 2,
+                     cex.names = 0.7)
+
+text(x = midPoints, y = app_rating + 0.1, labels = app_rating, pos = 3, cex = 0.8)
+
+legend("topright", legend = names(app_rating), fill = colors1, title = "App Name", cex = 0.6)
+
+dev.off()
