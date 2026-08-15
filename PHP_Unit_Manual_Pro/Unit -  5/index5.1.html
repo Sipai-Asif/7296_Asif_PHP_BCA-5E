@@ -1,0 +1,15 @@
+<button onclick="loadData()">Get Data</button>
+<div id="output"></div>
+
+<script>
+function loadData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "P5.1.txt", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("output").innerText = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+</script>
