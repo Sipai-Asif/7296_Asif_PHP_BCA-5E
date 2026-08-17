@@ -1,0 +1,19 @@
+<input type="text" onkeyup="sendData(this.value)" placeholder="Type something...">
+<p id="live-response"></p>
+
+<script>
+function sendData(str) {
+    if (str.length == 0) {
+        document.getElementById("live-response").innerText = "";
+        return;
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "search.php?q=" + str, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("live-response").innerText = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+</script>
