@@ -1,0 +1,17 @@
+<input type="number" id="userId" placeholder="Enter User ID">
+<button onclick="getUser()">Fetch User Details</button>
+<div id="db-output"></div>
+
+<script>
+function getUser() {
+    var id = document.getElementById("userId").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "fetch_user.php?id=" + id, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("db-output").innerText = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+</script>
